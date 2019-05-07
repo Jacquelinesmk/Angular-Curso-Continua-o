@@ -1,0 +1,113 @@
+<div class="container">
+
+  <section class="input-output-properties">
+    <h2>Aula 13 e 14</h2>
+    <article>
+      <h3>Input/Output Properties</h3>
+      <app-curso [nome]="nomeDoCurso"></app-curso>
+
+      <contador [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></contador>
+
+    </article>
+    <br><br>
+  </section>
+
+  <section>
+    <h2>Aula 12</h2>
+
+    <app-meu-form></app-meu-form>
+
+  </section>
+
+
+  <section class="event-binding">
+    <h2>Aula 11</h2>
+    <article>
+      <h3>Event Binding</h3>
+      <div>
+        <button (click)="botaoClicado()" class="btn btn-primary">
+          Clique aqui!
+        </button>
+
+        <br><br>
+
+        <input type="text" (keyup)="onKeyup($event)" (keyup.enter)="salvarValor($event.target.value)"
+          (blur)="salvarValor(campoInput.value)" #campoInput />
+
+        <p>Valor Atual: {{ valorAtual }}</p>
+        <p>Valor Salvo: {{ valorSalvo }}</p>
+
+        <br>
+
+        <span (mouseover)="onMouseOverOut()" (mouseout)="onMouseOverOut()" [class.highlight]="isMouseOver">
+          Passe o mouse sobre mim!
+        </span>
+
+      </div>
+    </article>
+
+    <br><br>
+
+  </section>
+
+  <section>
+    <!-- Aula 10-->
+    <h2>Aula 10</h2>
+    <article>
+      <h3>Class e Style Binding</h3>
+      <div>
+        Selecione uma classe:
+        <select #classe (change)="0">
+          <option value="alert-success">Sucesso</option>
+          <option value="alert-info">Info</option>
+          <option value="alert-warning">Warning</option>
+          <option value="alert-danger">Danger</option>
+        </select>
+        <br><br>
+
+        <div class="alert {{ classe.value }}" role="alert">Texto Colorido conforme o comboBox</div>
+
+        <div class="alert " role="alert" [class.alert-success]="classe.value == 'alert-success'">
+          A simple success alert—check it out!
+        </div>
+        <div class="alert " role="alert" [class.alert-info]="classe.value == 'alert-info'">
+          A simple info alert—check it out!
+        </div>
+        <div class="alert " role="alert" [class.alert-warning]="classe.value == 'alert-warning'">
+          A simple warning alert—check it out!
+        </div>
+        <div class="alert " role="alert" [class.alert-danger]="classe.value == 'alert-danger'">
+          A simple danger alert—check it out!
+        </div>
+
+        <div class="alert alert-danger" role="alert"
+          [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'">
+          Esse texto só aparece em caso de erro</div>
+
+        <br>
+        <div class="alert alert-secondary" role="alert">
+          A simple secondary alert—check it out!
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Aula 09 -->
+    <h2>Aula 09</h2>
+    <article>
+      <h3>Interpolação</h3>
+      <p>String renderizada com Interpolação: {{ url }} </p>
+      <p>Resultado de 1 + 1 é {{ 1 + 1 }}</p>
+      <p>Resultado de 1 + 1 não é {{ 1 + 1 + getValor() }}</p>
+      <p>Curso de angular e gosto do curso: {{ cursoAngular && getCurtiCurso() }}</p>
+    </article>
+
+    <article>
+      <h3>Property Binding</h3>
+      <img src="{{ urlImagem }}" alt="imagem">
+      <img [src]="urlImagem">
+    </article>
+
+  </section>
+
+</div>
